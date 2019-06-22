@@ -1,0 +1,110 @@
+
+config dnsmasq
+	option domainneeded '1'
+	option localise_queries '1'
+	option rebind_protection '1'
+	option rebind_localhost '1'
+	option expandhosts '1'
+	option authoritative '1'
+	option readethers '1'
+	option leasefile '/tmp/dhcp.leases'
+	option resolvfile '/tmp/resolv.conf.auto'
+	option nonwildcard '1'
+	option localservice '1'
+	option local '/lab/'
+	option domain 'lab'
+
+config boot 'linux'
+	option filename 'pxelinux.0'
+	option serveraddress '192.168.4.2'
+	option servername 'server'
+
+config dhcp 'wan'
+	option interface 'wan'
+	option ignore '1'
+
+config odhcpd 'odhcpd'
+	option maindhcp '0'
+	option leasefile '/tmp/hosts/odhcpd'
+	option leasetrigger '/usr/sbin/odhcpd-update'
+	option loglevel '4'
+
+config dhcp 'mgmt'
+	option start '100'
+	option leasetime '12h'
+	option limit '150'
+	option interface 'mgmt'
+
+config dhcp 'data'
+	option start '100'
+	option leasetime '12h'
+	option limit '150'
+	option interface 'data'
+
+config dhcp 'storage'
+	option start '100'
+	option leasetime '12h'
+	option limit '150'
+	option interface 'storage'
+
+config host
+	option dns '1'
+	option leasetime '3600'
+	option name 'bmc1.lab'
+	option mac '00:25:90:6F:8B:C0'
+	option ip '192.168.2.11'
+
+config host
+	option dns '1'
+	option leasetime '3600'
+	option name 'bmc2.lab'
+	option mac '00:25:90:6F:8B:C0'
+	option ip '192.168.2.12'
+
+config host
+	option dns '1'
+	option leasetime '3600'
+	option name 'bmc3.lab'
+	option mac '00:25:90:6D:58:05'
+	option ip '192.168.2.13'
+
+config host
+	option dns '1'
+	option leasetime '3600'
+	option name 'os1.data'
+	option mac '00:30:48:9F:C2:02'
+	option ip '192.168.4.101'
+
+config host
+	option dns '1'
+	option leastime '3600'
+	option name 'os2i.data'
+	option mac '00:25:90:6A:75:B4'
+	option ip '192.168.4.102'
+
+config host
+	option dns '1'
+	option leastime '3600'
+	option name 'os3i.data'
+	option mac '00:25:90:60:B6:14'
+	option ip '192.168.4.103'
+
+config host
+	option dns '1'
+	option name 'os1.storage'
+	option mac '00:30:48:9F:C2:03'
+	option ip '192.168.3.101'
+
+config host
+	option dns '1'
+	option leastime '3600'
+	option name 'os2.storage'
+	option mac '00:25:90:6A:75:B5'
+	option ip '192.168.3.102'
+
+config host
+	option dns '1'
+	option leastime '3600'
+	option name 'os3.storage'
+	option mac '00:25:90:60:B6:15'
+	option ip '192.168.3.103'
