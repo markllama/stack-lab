@@ -1,0 +1,12 @@
+default menu.c32
+prompt 0
+timeout 300
+serial 0 115200
+
+MENU TITLE PXE Menu
+
+LABEL {{ distro }} {{ version }} Rescue
+        MENU LABEL {{ distro }} {{ version }} Rescue
+        KERNEL stage2/{{ distro }}{{ version }}/vmlinuz
+        APPEND rescue initrd=stage2/{{ distro }}{{version}}/initrd.img ramdisk_size=100000 ip=dhcp console=ttyS1,115200n8
+    
