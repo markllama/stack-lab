@@ -1,0 +1,6 @@
+distro: fedora
+version: 30
+nic: enp1s0f0
+hostname: node1
+bootserver: 172.168.1.2
+ksserver: 172.168.1.2
