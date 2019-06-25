@@ -8,5 +8,4 @@ MENU TITLE PXE Menu
 LABEL {{ distro }} {{ version }} Rescue
         MENU LABEL {{ distro }} {{ version }} Rescue
         KERNEL stage2/{{ distro }}{{ version }}/vmlinuz
-        APPEND rescue initrd=stage2/{{ distro }}{{version}}/initrd.img ramdisk_size=100000 ip=dhcp console=ttyS1,115200n8
-    
+        APPEND rescue initrd=stage2/{{ distro }}{{version}}/initrd.img ip=dhcp console=ttyS1,115200n8 inst.stage2=nfs:${{ bootserver }}:/home/media/os/{{ distro }}{{ version }}/ 
