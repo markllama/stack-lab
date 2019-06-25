@@ -1,12 +1,11 @@
 default menu.c32
-prompt 1
+prompt 0
 timeout 300
-ONTIMEOUT local
 serial 0 115200
 
 MENU TITLE PXE Menu
 
-LABEL Fedora 30 Kicksart Install
+LABEL Fedora 30 Kickstart Install
         MENU LABEL Fedora 30 Manual Install enp1s0f0
         KERNEL stage2/fedora30/vmlinuz
         APPEND initrd=stage2/fedora30/initrd.img ramdisk_size=100000 ksdevice=enp1s0f0 ip=dhcp console=ttyS1,115200n8 inst.stage2=nfs:192.168.4.2:/home/media/os/fedora30/  ks=nfs:192.168.4.2:/home/media/ks/node1-fedora30.ks
