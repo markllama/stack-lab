@@ -1,0 +1,43 @@
+#
+# Kickstart for Node 1 with Fedora 30
+#
+
+install nfs --server={{ server }} --dir /home/media/os/{{ distro }}{{ version }}/
+text
+
+bootloader --location mbr --boot-drive=sda
+
+ignoredisk --only-use=sda
+clearpart --all --initlabel --drives=sda
+
+part /boot --fstype="ext4" --ondisk=sda --size=1024
+part pv.245 --fstype="lvmpv" --ondisk=sda --size=1024 --grow
+volgroup {{ distro }}_os1 --pesize=4096 pv.245
+logvol / --fstype="xfs" --size=20480 --name=root --vgname={{ distro }}_os1
+logvol swap --fstype="swap" --size=4096 --name=swap --vgname={{ distro }}_os1
+logvol /var --fstype="xfs" --size=238418 --name=var --vgname={{ distro }}_os1
+logvol /home --fstype="xfs" --grow --size=2048 --name=home --vgname={{ distro }}_os1
+
+network  --bootproto=dhcp --device={{ nic}}  --ipv6=auto --activate
+
+network  --hostname={{ hostname }}{{ domain }}
+
+timezone Etc/UTC --isUtc
+
+services --enabled="chronyd"
+
+rootpw --iscrypted {{ root_hash }}
+user --groups=wheel --name={{ admin_user }} --password={{ admin_hash }}. --iscrypted
+
+skipx
+
+%packages
+@^server-product-environment
+
+%end
+
+%anaconda
+pwpolicy root --minlen=6 --minquality=1 --notstrict --nochanges --notempty
+pwpolicy user --minlen=6 --minquality=1 --notstrict --nochanges --emptyok
+pwpolicy luks --minlen=6 --minquality=1 --notstrict --nochanges --notempty
+%end
