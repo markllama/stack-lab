@@ -132,6 +132,7 @@ def ip2hex (addr):
 def process_cli(args):
     parser = argparse.ArgumentParser()
 
+    parser.add_argument("--mode", default="kickstart", choices=["kickstart", "manual", "rescue"])
     parser.add_argument("--hostname", "-H")
     parser.add_argument("--distro", "--distribution", default="fedora")
     parser.add_argument("--version", default="30")
@@ -150,7 +151,7 @@ def load_template(file):
 
 def merge_configs(opts):
 
-    os = {"distro": opts.distro, "version": opts.version}
+    os = {"mode": opts.mode, "distro": opts.distro, "version": opts.version}
     
     install_source = yaml.load(open("./configs/kickstart.yaml"), yaml.loader.BaseLoader)
     node_spec = yaml.load(open("./configs/{}.yaml".format(opts.hostname)), yaml.loader.BaseLoader)
@@ -161,7 +162,7 @@ def merge_configs(opts):
     return config
 
 def gen_pxe_file(config):
-    template = load_template("./templates/pxe-kickstart.j2")
+    template = load_template("./templates/pxe-{}.j2".format(config['mode']))
     return template.render(config)
 
 def gen_kickstart_file(config):
@@ -187,17 +188,18 @@ def main():
     pxe_file.write(pxe_content)
     pxe_file.close()
 
-    ks_file_name = os.path.join(
-        ks_root,
-        "{}-{}{}.ks".format(
-            config['hostname'],
-            config['distro'],
-            config['version']))
+    if opts.mode == "kickstart":
+        ks_file_name = os.path.join(
+            ks_root,
+            "{}-{}{}.ks".format(
+                config['hostname'],
+                config['distro'],
+                config['version']))
 
-    print("writing to {}".format(ks_file_name))
-    ks_file = open(ks_file_name, "w")
-    ks_file.write(kickstart_content)
-    ks_file.close()
+        print("writing to {}".format(ks_file_name))
+        ks_file = open(ks_file_name, "w")
+        ks_file.write(kickstart_content)
+        ks_file.close()
 
     
 if __name__ == "__main__":
