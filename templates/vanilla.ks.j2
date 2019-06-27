@@ -20,7 +20,7 @@ logvol /home --fstype="xfs" --grow --size=2048 --name=home --vgname={{ distro }}
 
 network  --bootproto=dhcp --device={{ nic}}  --ipv6=auto --activate
 
-network  --hostname={{ hostname }}{{ domain }}
+network  --hostname={{ hostname }}.{{ domain }}
 
 timezone Etc/UTC --isUtc
 
