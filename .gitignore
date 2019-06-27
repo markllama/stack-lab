@@ -1,5 +1,7 @@
 #
 secrets.yaml
+pxe
+kickstart
 
 # Emacs backup files
 *~

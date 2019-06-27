@@ -6,6 +6,6 @@ serial 0 115200
 MENU TITLE PXE Menu
 
 LABEL {{ distro }} {{ version }} Kickstart Install
-        MENU LABEL {{ distro }} {{ version }} Manual Install {{ nic }}
+        MENU LABEL {{ distro }} {{ version }} Kickstart Install {{ nic }}
         KERNEL stage2/{{ distro  }}{{ version }}/vmlinuz
         APPEND initrd=stage2/{{ distro }}{{ version }}/initrd.img ramdisk_size=100000 ksdevice={{ nic }} ip=dhcp console=ttyS1,115200n8 inst.stage2=nfs:{{ bootserver }}:/home/media/os/{{ distro }}{{ version }}/  ks=nfs:{{ bootserver }}:/home/media/ks/{{ hostname }}-{{ distro }}{{ version }}.ks

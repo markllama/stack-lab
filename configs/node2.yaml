@@ -1,0 +1,8 @@
+---
+# What it will be and how to talk to it
+hostname: node2
+domain: lab.lamourine.org
+nic: enp1s0f0
+ipaddress: 192.168.4.102
+
+
