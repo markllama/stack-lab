@@ -2,7 +2,7 @@
 # Kickstart for Node 1 with Fedora 30
 #
 
-install nfs --server={{ server }} --dir /home/media/os/{{ distro }}{{ version }}/
+install nfs --server={{ bootserver }} --dir /home/media/os/{{ distro }}{{ version }}/
 text
 
 bootloader --location mbr --boot-drive=sda
