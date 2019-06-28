@@ -166,7 +166,7 @@ def gen_pxe_file(config):
     return template.render(config)
 
 def gen_kickstart_file(config):
-    template = load_template("./templates/vanilla.ks.j2")
+    template = load_template("./templates/{}{}.ks.j2".format(config['distro'], config['version']))
     return template.render(config)
 
 
