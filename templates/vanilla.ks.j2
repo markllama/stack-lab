@@ -4,6 +4,8 @@
 
 install nfs --server={{ bootserver }} --dir /home/media/os/{{ distro }}{{ version }}/
 text
+skipx
+reboot
 
 bootloader --location mbr --boot-drive=sda
 
@@ -28,8 +30,6 @@ services --enabled="chronyd"
 
 rootpw --iscrypted {{ root_hash }}
 user --groups=wheel --name={{ admin_user }} --password={{ admin_hash }}. --iscrypted
-
-skipx
 
 %packages
 @^server-product-environment
