@@ -178,7 +178,6 @@ def main():
 
     config = merge_configs(opts)
     pxe_content = gen_pxe_file(config)
-    kickstart_content = gen_kickstart_file(config)
 
     hex_address = ip2hex(config['ipaddress']).upper()
     
@@ -189,6 +188,7 @@ def main():
     pxe_file.close()
 
     if opts.mode == "kickstart":
+        kickstart_content = gen_kickstart_file(config)
         ks_file_name = os.path.join(
             ks_root,
             "{}-{}{}.ks".format(
