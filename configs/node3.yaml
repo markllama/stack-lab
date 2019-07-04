@@ -1,8 +1,22 @@
----
-# What it will be and how to talk to it
+#distro: fedora
+#version: 30
 hostname: node3
-domain: lab.lamourine.org
-nic: enp1s0f0
-ipaddress: 192.168.4.103
-
-
+bootserver: 172.168.1.1
+ksserver: 172.168.1.1
+sp:
+  mac: 00:25:90:6D:58:05
+  ipaddr: 192.168.2.13
+  user: mark
+nics:
+  - name: enp1s0f0
+    mac: 00:25:90:60:B6:14
+    provision: true
+    ipaddr: 192.168.4.103
+    cidr: 24
+    gateway: 192.168.4.1
+    dns: 192.168.1.1
+  - name: enp1s0f1
+    mac: 00:25:90:60:B6:15
+    ipaddr: 192.168.3.103
+    cidr: 24
+    gateway: 192.168.3.1

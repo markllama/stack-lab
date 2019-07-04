@@ -15,7 +15,6 @@
 # PXE/kickstart service spec
 # secrets spec
 # 
-#
 # Where are the templates?
 # Where are the config data files?
 
@@ -125,6 +124,13 @@ def ip2hex (addr):
     return "%08x" % netip
 #end ip2hex
 
+def pxe_mac(mac):
+    """
+    Create a MAC address file for pxe builds.
+    Add O1 to the beginning, replace colons with hyphens and downcase
+    """
+    return "01-" + mac.replace(":", "-").lower()
+
 # =============================================================================
 #
 # =============================================================================
@@ -167,6 +173,10 @@ def gen_pxe_file(config):
 
 def gen_kickstart_file(config):
     template = load_template("./templates/{}{}.ks.j2".format(config['distro'], config['version']))
+
+    # extract and set the primary provisioning nic in the config
+    # find the provisioning nic information
+    
     return template.render(config)
 
 
@@ -177,10 +187,17 @@ def main():
     # Process inputs
 
     config = merge_configs(opts)
+
+    print(config)
+    
+    prov_nics = [nic for nic in config['nics'] if 'provision' in nic and nic['provision']]
+
+    print ("I found {} nics".format(len(prov_nics)))
+    config['nic'] = prov_nics[0]['name']
     pxe_content = gen_pxe_file(config)
 
-    hex_address = ip2hex(config['ipaddress']).upper()
-    
+    #hex_address = ip2hex(config['ipaddress']).upper()
+    hex_address = pxe_mac(config['sp']['mac'])
     pxe_file_name = os.path.join(pxe_root, hex_address)
     print("writing to {}".format(pxe_file_name))
     pxe_file = open(pxe_file_name, "w")

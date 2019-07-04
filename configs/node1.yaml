@@ -1,8 +1,22 @@
----
-# What it will be and how to talk to it
+#distro: fedora
+#version: 30
 hostname: node1
-domain: lab.lamourine.org
-nic: enp1s0f0
-ipaddress: 192.168.4.101
-
-
+domain: prov.lab.lamourine.org
+bootserver: 172.168.1.1
+ksserver: 172.168.1.1
+sp:
+  mac: 00:25:90:6F:8B:C0
+  ipaddr: 192.168.2.11
+  user: mark
+nics:
+  - name: enp1s0f0
+    mac: 00:30:48:9f:c2:02
+    provision: true
+    ipaddr: 192.168.4.101
+    cidr: 24
+    gateway: 192.168.4.1
+    dns: 192.168.1.1
+  - name: enp1s0f1
+    mac: 00:30:48:9f:c2:03
+    ipaddr: 192.168.3.101
+    cidr: 24
