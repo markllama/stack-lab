@@ -202,7 +202,7 @@ def main():
     pxe_content = gen_pxe_file(config)
 
     #hex_address = ip2hex(config['ipaddress']).upper()
-    hex_address = pxe_mac(config['sp']['mac'])
+    hex_address = pxe_mac(prov_nics[0]['mac'])
     pxe_file_name = os.path.join(pxe_root, hex_address)
     print("writing to {}".format(pxe_file_name))
     pxe_file = open(pxe_file_name, "w")
