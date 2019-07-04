@@ -1,8 +1,8 @@
 #distro: fedora
 #version: 30
 hostname: node2
-bootserver: 172.168.1.1
-ksserver: 172.168.1.1
+bootserver: 192.168.4.1
+ksserver: 192.168.4.1
 sp:
   mac: 00:25:90:6F:8B:C0
   ipaddr: 192.168.2.12
