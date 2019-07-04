@@ -194,6 +194,11 @@ def main():
 
     print ("I found {} nics".format(len(prov_nics)))
     config['nic'] = prov_nics[0]['name']
+    config['ipaddr'] = prov_nics[0]['ipaddr']
+    config['netmask'] = prov_nics[0]['netmask']
+    config['gateway'] = prov_nics[0]['gateway']
+    config['nameserver'] = prov_nics[0]['dns']
+    
     pxe_content = gen_pxe_file(config)
 
     #hex_address = ip2hex(config['ipaddress']).upper()

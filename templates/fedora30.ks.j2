@@ -2,7 +2,7 @@
 # Kickstart for Node 1 with Fedora 30
 #
 
-install nfs --server={{ bootserver }} --dir /home/media/os/{{ distro }}{{ version }}/
+nfs --server={{ bootserver }} --dir /home/media/os/{{ distro }}{{ version }}/
 text
 skipx
 reboot
@@ -20,7 +20,7 @@ logvol swap --fstype="swap" --size=4096 --name=swap --vgname={{ distro }}_os1
 logvol /var --fstype="xfs" --size=238418 --name=var --vgname={{ distro }}_os1
 logvol /home --fstype="xfs" --grow --size=2048 --name=home --vgname={{ distro }}_os1
 
-network  --bootproto=dhcp --device={{ nic }}  --ipv6=auto --activate
+network  --device={{ nic }}  --bootproto=static --ip={{ ipaddr }} --netmask={{ netmask }} --gateway={{ gateway }} --nameserver={{ nameserver }} --ipv6=auto --activate
 
 network  --hostname={{ hostname }}.{{ domain }}
 

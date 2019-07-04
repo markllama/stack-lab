@@ -12,7 +12,8 @@ nics:
   - name: enp1s0f0
     mac: 00:30:48:9f:c2:02
     provision: true
-    ipaddr: 192.168.4.101
+    ipaddr: 192.168.4.101/24
+    netmask: 255.255.255.0
     cidr: 24
     gateway: 192.168.4.1
     dns: 192.168.1.1
