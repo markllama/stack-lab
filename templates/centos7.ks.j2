@@ -1,8 +1,8 @@
 #
-# Kickstart for Node 1 with Fedora 30
+# Kickstart for Node with CentOS7
 #
+url --url=http://{{ bootserver }}/media/os/{{ distro }}{{ version }}/
 
-nfs --server={{ bootserver }} --dir /media/os/{{ distro }}{{ version }}/
 text
 skipx
 reboot
