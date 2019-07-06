@@ -2,7 +2,7 @@
 # Kickstart for Node 1 with Fedora 30
 #
 
-nfs --server={{ bootserver }} --dir /home/media/os/{{ distro }}{{ version }}/
+nfs --server={{ bootserver }} --dir /media/os/{{ distro }}{{ version }}/
 text
 skipx
 reboot
