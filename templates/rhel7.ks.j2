@@ -16,7 +16,7 @@ clearpart --all --initlabel --drives=sda
 part /boot --fstype="ext4" --ondisk=sda --size=1024
 part pv.245 --fstype="lvmpv" --ondisk=sda --size=1024 --grow
 volgroup {{ distro }}_os1 --pesize=4096 pv.245
-logvol / --fstype="xfs" --size=20480 --grow -name=root --vgname={{ distro }}_os1
+logvol / --fstype="xfs" --size=20480 --grow --name=root --vgname={{ distro }}_os1
 logvol swap --fstype="swap" --size=4096 --name=swap --vgname={{ distro }}_os1
 #logvol /var --fstype="xfs" --size=238418 --name=var --vgname={{ distro }}_os1
 #logvol /home --fstype="xfs" --grow --size=2048 --name=home --vgname={{ distro }}_os1
