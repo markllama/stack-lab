@@ -11,6 +11,7 @@ nics:
     mac: 00:25:90:6a:75:b4
     provision: true
     ipaddr: 192.168.4.102
+    netmask: 255.255.255.0
     cidr: 24
     gateway: 192.168.4.1
     dns: 192.168.1.1
