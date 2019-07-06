@@ -8,4 +8,4 @@ MENU TITLE PXE Menu
 LABEL {{ distro }} {{ version }} Manual Install
         MENU LABEL {{ distro }} {{ version }} Manual Install {{ nic }}
         KERNEL stage2/{{ distro }}{{ version }}/vmlinuz
-        APPEND initrd=stage2/{{ distro }}{{version}}/initrd.img ramdisk_size=100000 ksdevice={{ nic }} ip=dhcp console=ttyS1,115200n8 inst.stage2=http://{{ bootserver}}/media/os/{{ distro }}{{ version}}/
+        APPEND initrd=stage2/{{ distro }}{{ version }}/initrd.img ramdisk_size=100000 ksdevice={{ nic }} ip=dhcp console=ttyS1,115200n8 inst.stage2=http://{{ bootserver }}/media/os/{{ distro }}{{ version}}/
