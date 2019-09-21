@@ -1,0 +1,21 @@
+= Lab Networks
+
+.Table VLANs and Networks
+|===
+| Network | VLAN | Interface | IP Range
+
+| IPMI | - | - | -
+
+| Provisioning | - | - | -
+
+| Internal API | - | - | -
+
+| Storage | - | - | -
+
+| Storage Management | - | - | -
+
+| Tenant | - | - | -
+
+| Floating IP | - | - | -
+
+|===
