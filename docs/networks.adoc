@@ -4,9 +4,9 @@
 |===
 | Network | VLAN | IP Range | Director | Controller | Compute | Storage
 
-| IPMI | 1 | - | - | - | - | -
+| IPMI | 1 | 172.16.2.0/24 | en01 | SP | SP | SP
 
-| Provisioning | - | - | - | - | - | -
+| Provisioning | 1 | 172.16.4.0/24 | br-ctlplane (enp5s0) | enp1s0f0 | enp1s0f0 | enp1s0f0
 
 | Internal API | - | - | - | - | - | -
 
