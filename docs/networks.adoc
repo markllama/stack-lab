@@ -2,20 +2,20 @@
 
 .Table VLANs and Networks
 |===
-| Network | VLAN | Interface | IP Range
+| Network | VLAN | IP Range | Director | Controller | Compute | Storage
 
-| IPMI | - | - | -
+| IPMI | 1 | - | - | - | - | -
 
-| Provisioning | - | - | -
+| Provisioning | - | - | - | - | - | -
 
-| Internal API | - | - | -
+| Internal API | - | - | - | - | - | -
 
-| Storage | - | - | -
+| Storage | - | - | - | - | - | -
 
-| Storage Management | - | - | -
+| Storage Management | - | - | - | - | - | -
 
-| Tenant | - | - | -
+| Tenant | - | - | - | - | - | -
 
-| Floating IP | - | - | -
+| Floating IP | - | - | - | - | - | -
 
 |===
